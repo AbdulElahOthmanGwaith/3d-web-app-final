@@ -1,0 +1,40 @@
+name: Build and Deploy Jekyll site
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. جلب الكود
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # 2. إعداد Ruby
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.2
+
+    # 3. تثبيت Jekyll والاعتمادات
+    - name: Install dependencies
+      run: |
+        gem install bundler jekyll
+        bundle install || true
+
+    # 4. بناء الموقع
+    - name: Build Jekyll site
+      run: |
+        jekyll build --future
+
+    # 5. نشر الموقع على GitHub Pages
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v6
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./_site
