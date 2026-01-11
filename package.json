@@ -1,0 +1,13 @@
+{
+  "name": "3d-web-app-final",
+  "version": "1.0.0",
+  "description": "A 3D web application using Three.js and Tailwind CSS",
+  "main": "script.js",
+  "scripts": {
+    "start": "npx tailwindcss -i ./index.css -o ./style.css --watch",
+    "build": "npx tailwindcss -i ./index.css -o ./style.css"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}
