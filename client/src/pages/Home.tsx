@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import QACard from '@/components/QACard';
+import InstallPrompt from '@/components/InstallPrompt';
 
 import qaData from '@/data/qa_data.json';
 
@@ -27,6 +28,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
+      <InstallPrompt />
       <Header
         currentLanguage={currentLanguage}
         onLanguageChange={setCurrentLanguage}
