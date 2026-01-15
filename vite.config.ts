@@ -46,6 +46,7 @@ const plugins = [
 ];
 
 export default defineConfig({
+  base: '/qa-multilingual-app/',
   plugins,
   resolve: {
     alias: {
